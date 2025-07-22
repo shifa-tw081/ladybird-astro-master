@@ -1,0 +1,136 @@
+---
+import FakeDashboard from "./FakeDashboard";
+---
+
+<script>
+	// set the height of LaptopSection__screen to 6/10 of the width of LaptopSection__screen
+	// this is to maintain the aspect ratio of the screen
+	document.addEventListener("DOMContentLoaded", () => {
+		const screen = document.querySelector(
+			".LaptopSection__screen"
+		) as HTMLElement | null;
+		const video = document.querySelector(
+			".LaptopSection__vid"
+		) as HTMLVideoElement | null;
+
+		if (!screen || !video) return;
+
+		const resizeScreen = () => {
+			if (window.innerWidth > 1024 && window.innerWidth < 1240) {
+				let newWidth = Math.min(window.innerWidth, 1224) * 0.6;
+				screen.style.width = `${newWidth}px`;
+				screen.style.height = `${(newWidth * 10) / 16}px`;
+			} else if (window.innerWidth > 1240 && window.innerWidth < 1415) {
+				let newWidth = Math.min(window.innerWidth, 1224) * 0.62;
+				screen.style.width = `${newWidth}px`;
+				screen.style.height = `${(newWidth * 10) / 16}px`;
+			} else {
+				let newWidth = Math.min(window.innerWidth, 1224) * 0.7;
+				screen.style.width = `${newWidth}px`;
+				screen.style.height = `${(newWidth * 10) / 16}px`;
+			}
+		};
+
+		// Initial resize
+		resizeScreen();
+
+		// Resize on window change
+		window.addEventListener("resize", resizeScreen);
+	});
+	// src="https://res.cloudinary.com/dywp91yx7/video/upload/f_auto:video,q_auto/a6stehta5uclkbrihwsr"
+	// https://res.cloudinary.com/dywp91yx7/video/upload/v1743708797/wkc7qc21cfbaa2qgdqat.webm
+</script>
+<section class="LaptopSection__inner">
+	<div class="LaptopSection__innerWrap">
+		<video
+			class="LaptopSection__vid"
+			src="https://res.cloudinary.com/dywp91yx7/video/upload/v1744711503/vnslzhutjukd0dppaif5.mp4"
+			muted
+			playsinline></video>
+		<div class="LaptopSection__screen">
+			<FakeDashboard client:only />
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+	.LaptopSection {
+		&__inner {
+			height: 100%;
+			width: max-content;
+			position: relative;
+			display: flex;
+		}
+
+		&__innerWrap {
+			position: relative;
+			height: max-content;
+			margin: auto 0;
+			display: flex;
+		}
+
+		&__vid {
+			// disable clicking on the video
+			// height: 100%;
+			// max-height: 80vh;
+
+			// width: 100vw;
+			// width: 100%;
+			width: 85%;
+			max-width: clamp(0px, 100vw, 1440px);
+			object-fit: contain;
+
+			pointer-events: none;
+			margin: 0 auto;
+
+			// remove border
+			border: none;
+			-webkit-mask-image: -webkit-radial-gradient(white, black);
+			-webkit-backface-visibility: hidden;
+			-moz-backface-visibility: hidden;
+
+			isolation: isolate;
+		}
+
+		&__screen {
+			position: absolute;
+			// top: 5%;
+			top: 7%;
+			left: 50%;
+
+			transform: translateX(-50%);
+			// transform: translate(-50%, -50%);
+			aspect-ratio: 16 / 10;
+
+			opacity: 0;
+			// opacity: 0;
+			z-index: 1;
+			position: absolute;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		.LaptopSection {
+			&__vid {
+				width: 100%;
+			}
+		}
+	}
+
+	@media (max-width: 465px) {
+		.LaptopSection {
+			&__screen {
+				// top: 1.5%;
+			}
+		}
+	}
+
+	// @media (max-width: 900px) {
+	// 	.LaptopSection {
+	// 		&__screen {
+	// 			width: 65%;
+	// 			max-width: 70vw;
+	// 		}
+	// 	}
+	// }
+</style>

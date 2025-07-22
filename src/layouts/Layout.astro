@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, viewport-fit=cover"
+		/>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>Ladybird</title>
+		<script src="../scripts/timeline-animations--scroll.ts"></script>
+		<script src="../scripts/phone-animations.ts"></script>
+		<link
+			rel="preload"
+			href="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"
+			as="script"
+		/>
+		<!-- <script src="../scripts/test-3d.ts"></script> -->
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global lang="scss">
+	@font-face {
+		font-family: "SF Pro Display";
+		src: url("../assets/fonts/SFPRODISPLAYREGULAR.otf");
+		font-weight: 400;
+	}
+	@font-face {
+		font-family: "SF Pro Display";
+		src: url("../assets/fonts/SFPRODISPLAYLIGHT.otf");
+		font-weight: 300;
+	}
+	@font-face {
+		font-family: "SF Pro Display";
+		src: url("../assets/fonts/SFPRODISPLAYMEDIUM.otf");
+		font-weight: 500;
+	}
+	@font-face {
+		font-family: "SF Pro Display";
+		src: url("../assets/fonts/SFPRODISPLAYSEMIBOLD.otf");
+		font-weight: 600;
+	}
+	@font-face {
+		font-family: "SF Pro Display";
+		src: url("../assets/fonts/SFPRODISPLAYBOLD.otf");
+		font-weight: 700;
+	}
+	@font-face {
+		font-family: "SF Pro Display";
+		src: url("../assets/fonts/SFPRODISPLAYBLACK.otf");
+		font-weight: 900;
+	}
+
+	html {
+		font-family: "SF Pro Display", Arial, sans-serif;
+		background-color: #ffffff;
+		// cursor: none;
+
+		/* hide scrollbar across all browsers */
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+		&::-webkit-scrollbar {
+			display: none; /* Chrome, Safari, Opera*/
+		}
+
+		body {
+		}
+	}
+
+	*::selection {
+		color: #fff;
+		background-color: #ff0000;
+	}
+
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
+	#lottie-animation {
+		svg {
+			// width: 100%;
+			max-height: 100vh !important;
+		}
+	}
+
+	.word {
+		overflow: hidden;
+	}
+
+	.gsap-marker-scroller-start,
+	.gsap-marker-scroller-end,
+	.gsap-marker-start,
+	.gsap-marker-end {
+		opacity: 0 !important;
+	}
+
+	.bigRed {
+		color: #ff0000;
+		font-size: 6rem;
+		font-weight: 700;
+	}
+	.regularRed {
+		color: #ff0000;
+		font-weight: 700;
+	}
+	.italicRed {
+		color: #ff0000;
+		// font-style: italic;
+	}
+	.regularBold {
+		font-weight: 700;
+	}
+
+	@media (max-width: 768px) {
+		.bigRed {
+			font-size: 2.5rem;
+		}
+	}
+</style>

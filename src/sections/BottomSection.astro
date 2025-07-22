@@ -1,0 +1,209 @@
+---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import FloatingForm from "../components/FloatingForm.tsx";
+import LogoSlider from "../components/LogoSlider";
+
+export const brandList = [
+	{
+		name: "Microsoft",
+		logo: "/images/microsoft.jpg",
+	},
+	{
+		name: "NHS Data Security and Protection",
+		logo: "/images/nhss.png",
+	},
+	{
+		name: "Cisco",
+		logo: "/images/cisco.png",
+	},
+	{
+		name: "Cyber Essentials",
+		logo: "/images/cyber essentials.png",
+	},
+	{
+		name: "Health Innovation Manchester",
+		logo: "/images/health-innovation.png",
+	},
+	{
+		name: "NHS Confederation",
+		logo: "/images/NHS-CONF.png",
+	},
+	{
+		name: "ICO",
+		logo: "/images/ICO.png",
+	},
+	{
+		name: "Manchester Metroplitan University",
+		logo: "/images/machester-metro.svg",
+	},
+
+	// {
+	// 	name: "University of Manchester",
+	// 	logo: "/images/university-of-manchester.png",
+	// },
+];
+---
+
+<script></script>
+<SectionLayout className="BottomSectionWrapper">
+	<div class="BottomSection">
+		<div class="BottomSection__title">
+			<h1 class="specialH1">Curious?</h1>
+			<h1>Join Us for all things AI</h1>
+		</div>
+
+		<div class="BottomSection__form">
+			<FloatingForm client:load />
+			<p>
+				By joining us, you agree to Ladybird's <a
+					href="/files/inCall TnC.pdf"
+					target="_blank">Terms of Use</a
+				> and <a href="/files/inCall Privacy Policy.pdf" target="_blank"
+					>Privacy Policy</a
+				>
+			</p>
+		</div>
+		<p class="successMessage">Thank you for subscribing!</p>
+		<div class="BottomSection__brands">
+			<LogoSlider brands={brandList} client:only />
+		</div>
+	</div>
+</SectionLayout>
+
+<style lang="scss">
+	.BottomSection {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		// justify-content: center;
+		justify-content: space-between;
+		gap: 3rem;
+		padding: 3rem;
+		padding-bottom: 1rem;
+		margin-top: 7rem;
+
+		&__title {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+			width: 100%;
+			color: #000;
+
+			.specialH1 {
+				font-family: "SF Pro Display", Arial, sans-serif;
+				font-size: 5rem;
+				font-weight: 600;
+				// color: #ff0000;
+			}
+
+			h1 {
+				font-size: 2rem;
+				font-weight: 400;
+				line-height: 1.2;
+				text-align: center;
+				font-family: "Patrick Hand SC";
+			}
+		}
+
+		&__form {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			width: 100%;
+			max-width: 500px;
+			margin-bottom: 1.5rem;
+			color: #bdbdbd;
+
+			p {
+				font-size: 0.8rem;
+				color: #666;
+				text-align: center;
+			}
+
+			a {
+				text-decoration: none;
+				color: #000;
+				font-weight: 700;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			button {
+				width: 100%;
+				padding: 1rem;
+				border: none;
+				// border-radius: 0.5rem;
+				background-color: #000;
+				color: #fff;
+				font-size: 1.5rem;
+				cursor: pointer;
+				transition: background-color 0.3s;
+
+				&:hover {
+					background-color: #ff0000;
+				}
+				span {
+					display: inline-block;
+				}
+				svg {
+					animation: spin 1s ease-in-out infinite;
+					display: none;
+				}
+			}
+		}
+
+		&__brands {
+			width: 100%;
+			overflow: hidden;
+			// position: absolute;
+			// bottom: 2rem;
+			// left: 0;
+			width: 100%;
+		}
+
+		.successMessage {
+			color: #04db00;
+			font-size: 1.5rem;
+			font-weight: 700;
+			display: none;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.BottomSection {
+			padding: 1rem;
+			margin-top: 7rem;
+			// justify-content: center;
+
+			&__title {
+				gap: 0;
+				.specialH1 {
+					font-size: 3.5rem;
+				}
+
+				h1 {
+					font-size: 1.2rem;
+					line-height: 1;
+				}
+			}
+
+			&__form {
+				margin-bottom: 0;
+				input {
+					font-size: 0.75rem;
+					padding: 0.8rem;
+				}
+				p {
+					font-size: 0.6rem;
+				}
+			}
+			&__brands {
+				margin-top: 0;
+				bottom: 0.75rem;
+			}
+		}
+	}
+</style>

@@ -1,0 +1,48 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import BottomSection from "../sections/BottomSection.astro";
+import DeviceSection from "../sections/DeviceSection.astro";
+import FakeDashboard from "../sections/FakeDashboard";
+import IntroSection from "../sections/IntroSection.astro";
+import LaptopSection from "../sections/LaptopSection.astro";
+import PlainTextSection from "../sections/PlainTextSection.astro";
+---
+
+<Layout>
+	<div class="MainWrap">
+		<div class="MainWrap__inner">
+			<!-- <div class="fff"></div>
+		<div class="mmm"></div> -->
+			<!-- <div style="height: 1px;"></div> -->
+			<!-- <BottomSection /> -->
+			<!-- <DeviceSection /> -->
+			<IntroSection />
+			<PlainTextSection />
+			<DeviceSection />
+			<BottomSection />
+			<!-- <FakeDashboard client:only /> -->
+		</div>
+	</div>
+</Layout>
+
+<style lang="scss">
+	.fff {
+		height: 100vh;
+		background-color: red;
+	}
+	.mmm {
+		height: 100vh;
+		background-color: green;
+	}
+	.MainWrap {
+		// position: relative;
+		height: 100vh;
+		// overflow: hidden;
+
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+</style>
